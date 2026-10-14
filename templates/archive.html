@@ -1,0 +1,87 @@
+<!-- wp:group {"tagName":"section","align":"full","className":"kv2-split kv2-split--archive","backgroundColor":"bone","textColor":"graphite","layout":{"type":"default"}} -->
+<section class="wp-block-group alignfull kv2-split kv2-split--archive has-graphite-color has-bone-background-color has-text-color has-background">
+
+<!-- wp:group {"className":"kv2-split__panel","layout":{"type":"default"}} -->
+<div class="wp-block-group kv2-split__panel">
+
+<!-- wp:group {"className":"kv2-split__head","layout":{"type":"default"}} -->
+<div class="wp-block-group kv2-split__head">
+<!-- wp:site-title {"level":0,"className":"kv2-logo"} /-->
+<!-- wp:paragraph {"className":"kv2-label"} -->
+<p class="kv2-label"><a href="/">← Inicio</a></p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"kv2-split__body","layout":{"type":"default"}} -->
+<div class="wp-block-group kv2-split__body">
+<!-- wp:paragraph {"className":"kv2-label"} -->
+<p class="kv2-label">Archivo</p>
+<!-- /wp:paragraph -->
+<!-- wp:query-title {"type":"archive","showPrefix":false,"className":"kv2-archive-title"} /-->
+<!-- wp:term-description /-->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph {"className":"kv2-label kv2-lang"} -->
+<p class="kv2-label kv2-lang"><a href="/">ES</a><a href="/en/">EN</a></p>
+<!-- /wp:paragraph -->
+
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"kv2-split__media","layout":{"type":"default"}} -->
+<div class="wp-block-group kv2-split__media">
+<!-- wp:query {"queryId":31,"query":{"perPage":1,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"className":"kv2-archive-cover"} -->
+<div class="wp-block-query kv2-archive-cover">
+<!-- wp:post-template -->
+<!-- wp:post-featured-image {"sizeSlug":"full","className":"kv2-fill"} /-->
+<!-- /wp:post-template -->
+</div>
+<!-- /wp:query -->
+<!-- wp:paragraph {"className":"kv2-label kv2-hero__actions"} -->
+<p class="kv2-label kv2-hero__actions"><a href="/?s=">Buscar</a><a class="kv2-outline" href="/#suscripcion">Suscríbete</a></p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+
+</section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"main","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"}}},"layout":{"type":"constrained","contentSize":"1440px"}} -->
+<main class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80)">
+<!-- wp:query {"queryId":32,"query":{"perPage":12,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"className":"kv2-cards"} -->
+<div class="wp-block-query kv2-cards">
+<!-- wp:post-template {"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"280px"}} -->
+<!-- wp:group {"className":"kv2-card kv2-card--numbered","layout":{"type":"default"}} -->
+<div class="wp-block-group kv2-card kv2-card--numbered">
+<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"4/5","scale":"cover","sizeSlug":"medium_large"} /-->
+<!-- wp:group {"className":"kv2-card__meta","layout":{"type":"default"}} -->
+<div class="wp-block-group kv2-card__meta">
+<!-- wp:post-terms {"term":"category","separator":" · "} /-->
+<!-- wp:post-date {"format":"j M Y"} /-->
+</div>
+<!-- /wp:group -->
+<!-- wp:post-title {"level":2,"isLink":true} /-->
+<!-- wp:post-excerpt {"moreText":"","excerptLength":22} /-->
+</div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+
+<!-- wp:query-pagination {"paginationArrow":"arrow","className":"kv2-pagination","layout":{"type":"flex","justifyContent":"space-between"}} -->
+<!-- wp:query-pagination-previous {"label":"Anteriores"} /-->
+<!-- wp:query-pagination-numbers /-->
+<!-- wp:query-pagination-next {"label":"Siguientes"} /-->
+<!-- /wp:query-pagination -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph {"className":"kv2-label"} -->
+<p class="kv2-label">Aún no hay historias aquí.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results -->
+</div>
+<!-- /wp:query -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer"} /-->

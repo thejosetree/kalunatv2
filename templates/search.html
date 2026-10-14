@@ -1,0 +1,51 @@
+<!-- wp:template-part {"slug":"header","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","align":"full","layout":{"type":"constrained","contentSize":"1440px"}} -->
+<main class="wp-block-group alignfull">
+
+<!-- wp:group {"className":"kv2-page-head","layout":{"type":"default"}} -->
+<div class="wp-block-group kv2-page-head">
+<!-- wp:paragraph {"className":"kv2-label kv2-amber"} -->
+<p class="kv2-label kv2-amber">Buscar</p>
+<!-- /wp:paragraph -->
+<!-- wp:query-title {"type":"search","level":1} /-->
+<!-- wp:search {"label":"Buscar","showLabel":false,"placeholder":"Glaciares, auroras, equipo…","buttonText":"Buscar →","style":{"spacing":{"margin":{"top":"40px"}}}} /-->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:query {"queryId":51,"query":{"perPage":12,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"className":"kv2-cards","style":{"spacing":{"padding":{"bottom":"var:preset|spacing|80"}}}} -->
+<div class="wp-block-query kv2-cards" style="padding-bottom:var(--wp--preset--spacing--80)">
+<!-- wp:post-template {"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"280px"}} -->
+<!-- wp:group {"className":"kv2-card kv2-card--numbered","layout":{"type":"default"}} -->
+<div class="wp-block-group kv2-card kv2-card--numbered">
+<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"4/5","scale":"cover","sizeSlug":"medium_large"} /-->
+<!-- wp:group {"className":"kv2-card__meta","layout":{"type":"default"}} -->
+<div class="wp-block-group kv2-card__meta">
+<!-- wp:post-terms {"term":"category","separator":" · "} /-->
+<!-- wp:post-date {"format":"j M Y"} /-->
+</div>
+<!-- /wp:group -->
+<!-- wp:post-title {"level":2,"isLink":true} /-->
+<!-- wp:post-excerpt {"moreText":"","excerptLength":22} /-->
+</div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+
+<!-- wp:query-pagination {"paginationArrow":"arrow","className":"kv2-pagination","layout":{"type":"flex","justifyContent":"space-between"}} -->
+<!-- wp:query-pagination-previous {"label":"Anteriores"} /-->
+<!-- wp:query-pagination-numbers /-->
+<!-- wp:query-pagination-next {"label":"Siguientes"} /-->
+<!-- /wp:query-pagination -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph {"className":"kv2-label"} -->
+<p class="kv2-label">Aún no hay historias aquí.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results -->
+</div>
+<!-- /wp:query -->
+
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer"} /-->
