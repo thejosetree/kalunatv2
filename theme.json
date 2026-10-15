@@ -70,19 +70,14 @@
       "defaultFontSizes": false,
       "fontFamilies": [
         {
-          "slug": "big",
-          "name": "Freight Big",
-          "fontFamily": "freight-big-pro, Georgia, serif"
-        },
-        {
-          "slug": "display",
-          "name": "Freight Display",
-          "fontFamily": "freight-display-pro, Georgia, serif"
+          "slug": "headline",
+          "name": "Guyot Headline",
+          "fontFamily": "guyot-headline, Georgia, serif"
         },
         {
           "slug": "text",
-          "name": "Freight Text",
-          "fontFamily": "freight-text-pro, Georgia, serif"
+          "name": "Guyot Text",
+          "fontFamily": "guyot-text, Georgia, serif"
         },
         {
           "slug": "ui",
@@ -232,7 +227,7 @@
     "elements": {
       "heading": {
         "typography": {
-          "fontFamily": "var:preset|font-family|display",
+          "fontFamily": "var:preset|font-family|headline",
           "fontWeight": "400",
           "lineHeight": "1.1",
           "letterSpacing": "-0.005em"
@@ -240,7 +235,7 @@
       },
       "h1": {
         "typography": {
-          "fontFamily": "var:preset|font-family|big",
+          "fontFamily": "var:preset|font-family|headline",
           "fontSize": "var:preset|font-size|hero",
           "lineHeight": "0.86",
           "letterSpacing": "-0.03em"
@@ -248,7 +243,7 @@
       },
       "h2": {
         "typography": {
-          "fontFamily": "var:preset|font-family|big",
+          "fontFamily": "var:preset|font-family|headline",
           "fontSize": "var:preset|font-size|h2",
           "lineHeight": "1"
         }
@@ -420,7 +415,7 @@
           }
         },
         "typography": {
-          "fontFamily": "var:preset|font-family|display",
+          "fontFamily": "var:preset|font-family|headline",
           "fontSize": "clamp(28px, 2.6vw, 40px)",
           "lineHeight": "1.2"
         },
@@ -453,7 +448,7 @@
           }
         },
         "typography": {
-          "fontFamily": "var:preset|font-family|display",
+          "fontFamily": "var:preset|font-family|headline",
           "fontSize": "clamp(32px, 3vw, 46px)",
           "lineHeight": "1.15"
         }

@@ -8,7 +8,7 @@
 <div class="wp-block-group kv2-split__head">
 <!-- wp:site-title {"level":0,"className":"kv2-logo"} /-->
 <!-- wp:paragraph {"className":"kv2-label"} -->
-<p class="kv2-label"><a href="/">← Inicio</a></p>
+<p class="kv2-label"><a href="/">← Diario</a></p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
@@ -27,6 +27,9 @@
 <div class="wp-block-group kv2-label">
 <!-- wp:post-author-name /-->
 <!-- wp:post-date {"format":"j M Y"} /-->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"kalunatv2/reading-time"}}}} -->
+<p></p>
+<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
 </div>
@@ -38,6 +41,9 @@
 <!-- wp:group {"className":"kv2-split__media","layout":{"type":"default"}} -->
 <div class="wp-block-group kv2-split__media">
 <!-- wp:post-featured-image {"sizeSlug":"full","className":"kv2-fill"} /-->
+<!-- wp:paragraph {"className":"kv2-label kv2-lang kv2-glass kv2-split__lang"} -->
+<p class="kv2-label kv2-lang kv2-glass kv2-split__lang"><a href="/">ES</a><a href="/en/">EN</a></p>
+<!-- /wp:paragraph -->
 <!-- wp:group {"className":"kv2-glass kv2-split__exif","layout":{"type":"default"}} -->
 <div class="wp-block-group kv2-glass kv2-split__exif">
 <!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"core/post-meta","args":{"key":"kalunat_coords"}}}},"className":"kv2-coords"} -->
@@ -57,10 +63,68 @@
 <!-- wp:group {"tagName":"main","align":"full","className":"kv2-flush","layout":{"type":"default"}} -->
 <main class="wp-block-group alignfull kv2-flush">
 
-<!-- wp:group {"tagName":"article","align":"full","className":"kv2-article","layout":{"type":"constrained"}} -->
-<article class="wp-block-group alignfull kv2-article">
-<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
-<!-- wp:post-terms {"term":"post_tag","separator":" · ","className":"kv2-amber","style":{"spacing":{"margin":{"top":"64px"}}}} /-->
+<!-- wp:group {"tagName":"section","align":"full","className":"kv2-facts","backgroundColor":"black","layout":{"type":"default"}} -->
+<section class="wp-block-group alignfull kv2-facts has-black-background-color has-background">
+<!-- wp:group {"className":"kv2-fact","layout":{"type":"default"}} -->
+<div class="wp-block-group kv2-fact">
+<!-- wp:paragraph {"className":"kv2-label kv2-fact__label"} -->
+<p class="kv2-label kv2-fact__label">Lugar</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"core/post-meta","args":{"key":"kalunat_lugar"}}}},"className":"kv2-fact__value"} -->
+<p class="kv2-fact__value"></p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+<!-- wp:group {"className":"kv2-fact","layout":{"type":"default"}} -->
+<div class="wp-block-group kv2-fact">
+<!-- wp:paragraph {"className":"kv2-label kv2-fact__label"} -->
+<p class="kv2-label kv2-fact__label">Actividad</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"core/post-meta","args":{"key":"kalunat_actividad"}}}},"className":"kv2-fact__value"} -->
+<p class="kv2-fact__value"></p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+<!-- wp:group {"className":"kv2-fact","layout":{"type":"default"}} -->
+<div class="wp-block-group kv2-fact">
+<!-- wp:paragraph {"className":"kv2-label kv2-fact__label"} -->
+<p class="kv2-label kv2-fact__label">Duración</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"core/post-meta","args":{"key":"kalunat_duracion"}}}},"className":"kv2-fact__value"} -->
+<p class="kv2-fact__value"></p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+<!-- wp:group {"className":"kv2-fact","layout":{"type":"default"}} -->
+<div class="wp-block-group kv2-fact">
+<!-- wp:paragraph {"className":"kv2-label kv2-fact__label"} -->
+<p class="kv2-label kv2-fact__label">Dificultad</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"core/post-meta","args":{"key":"kalunat_dificultad"}}}},"className":"kv2-fact__value"} -->
+<p class="kv2-fact__value"></p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+<!-- wp:group {"className":"kv2-fact","layout":{"type":"default"}} -->
+<div class="wp-block-group kv2-fact">
+<!-- wp:paragraph {"className":"kv2-label kv2-fact__label"} -->
+<p class="kv2-label kv2-fact__label">Época</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"core/post-meta","args":{"key":"kalunat_epoca"}}}},"className":"kv2-fact__value"} -->
+<p class="kv2-fact__value"></p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+</section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","className":"kv2-article","layout":{"type":"default"}} -->
+<article class="wp-block-group kv2-article">
+<!-- wp:group {"tagName":"aside","className":"kv2-article__aside","layout":{"type":"default"}} -->
+<aside class="wp-block-group kv2-article__aside"></aside>
+<!-- /wp:group -->
+<!-- wp:post-content {"className":"kv2-article__content","layout":{"type":"default"}} /-->
+<!-- wp:post-terms {"term":"post_tag","separator":" · ","className":"kv2-amber kv2-article__tags"} /-->
 </article>
 <!-- /wp:group -->
 
@@ -69,26 +133,29 @@
 
 <!-- wp:group {"className":"kv2-endmatter__author","layout":{"type":"default"}} -->
 <div class="wp-block-group kv2-endmatter__author">
-<!-- wp:paragraph {"className":"kv2-label kv2-amber"} -->
-<p class="kv2-label kv2-amber">Texto y fotos</p>
+<!-- wp:paragraph {"className":"kv2-label kv2-muted"} -->
+<p class="kv2-label kv2-muted">Texto y fotografía</p>
 <!-- /wp:paragraph -->
 <!-- wp:post-author-name /-->
 <!-- wp:post-author-biography /-->
+<!-- wp:paragraph {"className":"kv2-label kv2-more"} -->
+<p class="kv2-label kv2-more"><a href="https://instagram.com/">Instagram →</a></p>
+<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
 
 <!-- wp:group {"className":"kv2-endmatter__related","layout":{"type":"default"}} -->
 <div class="wp-block-group kv2-endmatter__related">
-<!-- wp:paragraph {"className":"kv2-label"} -->
-<p class="kv2-label">Sigue leyendo</p>
+<!-- wp:paragraph {"className":"kv2-label kv2-amber"} -->
+<p class="kv2-label kv2-amber">Sigue leyendo</p>
 <!-- /wp:paragraph -->
-<!-- wp:query {"queryId":21,"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"kalunatSlot":"related"},"className":"kv2-cards"} -->
-<div class="wp-block-query kv2-cards">
-<!-- wp:post-template {"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"14rem"}} -->
+<!-- wp:query {"queryId":21,"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"kalunatSlot":"related"},"className":"kv2-cards kv2-related"} -->
+<div class="wp-block-query kv2-cards kv2-related">
+<!-- wp:post-template {"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"180px"}} -->
 <!-- wp:group {"className":"kv2-card","layout":{"type":"default"}} -->
 <div class="wp-block-group kv2-card">
 <!-- wp:post-featured-image {"isLink":true,"aspectRatio":"4/3","scale":"cover","sizeSlug":"medium_large"} /-->
-<!-- wp:post-terms {"term":"category","separator":" · ","className":"kv2-amber"} /-->
+<!-- wp:post-terms {"term":"category","separator":" · "} /-->
 <!-- wp:post-title {"level":3,"isLink":true} /-->
 </div>
 <!-- /wp:group -->

@@ -94,6 +94,94 @@
 		pick( 0 );
 	} );
 
+	// Ancho real de la ventana (sin barra de scroll) para las fotos a sangre.
+	var setVw = function () {
+		document.documentElement.style.setProperty( '--kv2-vw', document.documentElement.clientWidth + 'px' );
+	};
+	setVw();
+	window.addEventListener( 'resize', setVw );
+
+	// Capítulos: numera los H2 del relato y monta el índice fijo de la izquierda.
+	document.querySelectorAll( '.kv2-article' ).forEach( function ( article ) {
+		var content = article.querySelector( '.kv2-article__content' );
+		var aside = article.querySelector( '.kv2-article__aside' );
+		if ( ! content ) {
+			return;
+		}
+		var chapters = [];
+
+		content.querySelectorAll( ':scope > h2' ).forEach( function ( h2 ) {
+			var n = pad( chapters.length + 1 );
+			var kicker = h2.previousElementSibling;
+			var label = h2.textContent.trim();
+			if ( kicker && kicker.classList.contains( 'is-style-kv2-kicker' ) ) {
+				label = kicker.textContent.trim();
+				kicker.textContent = n + ' — ' + label;
+			} else {
+				kicker = document.createElement( 'p' );
+				kicker.className = 'kv2-chapter-kicker';
+				kicker.setAttribute( 'aria-hidden', 'true' );
+				kicker.textContent = n;
+				h2.parentNode.insertBefore( kicker, h2 );
+			}
+			h2.id = h2.id || 'cap-' + ( chapters.length + 1 );
+			chapters.push( { el: h2, label: label } );
+		} );
+
+		// «Si vas» cuenta como último capítulo.
+		var guide = content.querySelector( ':scope > .kv2-guide' );
+		if ( guide ) {
+			var gk = guide.querySelector( '.kv2-guide__kicker' );
+			var gt = guide.querySelector( '.kv2-guide__title' );
+			var gn = pad( chapters.length + 1 );
+			if ( gk ) {
+				gk.textContent = gn + ' — ' + gk.textContent.trim();
+			}
+			guide.id = guide.id || 'cap-' + ( chapters.length + 1 );
+			chapters.push( { el: guide, label: gt ? gt.textContent.trim() : 'Si vas' } );
+		}
+
+		if ( ! aside || chapters.length < 2 ) {
+			return;
+		}
+
+		var nav = document.createElement( 'nav' );
+		nav.className = 'kv2-toc';
+		nav.setAttribute( 'aria-label', 'Capítulos' );
+		nav.innerHTML = '<span class="kv2-label kv2-toc__title">Capítulos</span>';
+		var links = chapters.map( function ( c, i ) {
+			var a = document.createElement( 'a' );
+			a.href = '#' + c.el.id;
+			a.setAttribute( 'data-n', pad( i + 1 ) );
+			var span = document.createElement( 'span' );
+			span.textContent = c.label;
+			a.appendChild( span );
+			nav.appendChild( a );
+			return a;
+		} );
+		aside.appendChild( nav );
+
+		// Activo: el último capítulo cuyo encabezado ha cruzado el 40 % de la ventana.
+		var current = -1;
+		var update = function () {
+			var a = 0;
+			chapters.forEach( function ( c, i ) {
+				if ( c.el.getBoundingClientRect().top < window.innerHeight * 0.4 ) {
+					a = i;
+				}
+			} );
+			if ( a !== current ) {
+				current = a;
+				links.forEach( function ( l, i ) {
+					l.setAttribute( 'aria-current', i === a ? 'true' : 'false' );
+				} );
+			}
+		};
+		window.addEventListener( 'scroll', update, { passive: true } );
+		window.addEventListener( 'resize', update );
+		update();
+	} );
+
 	// Barra de progreso de lectura en las entradas.
 	if ( document.body.classList.contains( 'single-post' ) ) {
 		var bar = document.createElement( 'div' );

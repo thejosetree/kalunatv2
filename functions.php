@@ -7,8 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Adobe Fonts: Freight Big / Display / Text y Futura PT.
-define( 'KALUNATV2_ADOBE_FONTS', 'https://use.typekit.net/sai6zlp.css' );
+// Adobe Fonts: Guyot Headline y Guyot Text (kit tbz5hqk); Futura PT (kit sai6zlp).
+define( 'KALUNATV2_ADOBE_FONTS', 'https://use.typekit.net/tbz5hqk.css' );
+define( 'KALUNATV2_UI_FONT', 'https://use.typekit.net/sai6zlp.css' );
 // Gloock solo para el logotipo «kalunat°».
 define( 'KALUNATV2_LOGO_FONT', 'https://fonts.googleapis.com/css2?family=Gloock&display=swap' );
 
@@ -16,12 +17,13 @@ add_action( 'after_setup_theme', function () {
 	add_theme_support( 'wp-block-styles' );
 	add_theme_support( 'editor-styles' );
 	add_theme_support( 'post-thumbnails' );
-	add_editor_style( array( KALUNATV2_ADOBE_FONTS, KALUNATV2_LOGO_FONT, 'style.css' ) );
+	add_editor_style( array( KALUNATV2_ADOBE_FONTS, KALUNATV2_UI_FONT, KALUNATV2_LOGO_FONT, 'style.css' ) );
 } );
 
 add_action( 'wp_enqueue_scripts', function () {
 	$version = wp_get_theme()->get( 'Version' );
 	wp_enqueue_style( 'kalunatv2-adobe-fonts', KALUNATV2_ADOBE_FONTS, array(), null );
+	wp_enqueue_style( 'kalunatv2-ui-font', KALUNATV2_UI_FONT, array(), null );
 	wp_enqueue_style( 'kalunatv2-logo-font', KALUNATV2_LOGO_FONT, array(), null );
 	wp_enqueue_style( 'kalunatv2', get_stylesheet_uri(), array(), $version );
 	wp_enqueue_script( 'kalunatv2', get_theme_file_uri( 'assets/js/kalunatv2.js' ), array(), $version, array( 'strategy' => 'defer', 'in_footer' => true ) );
@@ -47,9 +49,21 @@ add_action( 'wp_head', function () {
 } );
 
 add_action( 'init', function () {
-	// Datos de la foto: se editan en el panel «Campos personalizados» de la entrada
-	// y se muestran en la portada mediante block bindings.
-	foreach ( array( 'kalunat_coords', 'kalunat_exif' ) as $key ) {
+	register_block_pattern_category( 'kalunatv2', array( 'label' => 'Kalunat' ) );
+
+	// Antetítulo de capítulo: párrafo corto sobre un H2 («La orilla sur»).
+	register_block_style( 'core/paragraph', array(
+		'name'  => 'kv2-kicker',
+		'label' => 'Antetítulo de capítulo',
+	) );
+
+	// Datos de la foto y ficha del viaje: se editan en el panel «Campos personalizados»
+	// de la entrada y se muestran mediante block bindings. Si están vacíos, no salen.
+	$keys = array(
+		'kalunat_coords', 'kalunat_exif',
+		'kalunat_lugar', 'kalunat_actividad', 'kalunat_duracion', 'kalunat_dificultad', 'kalunat_epoca',
+	);
+	foreach ( $keys as $key ) {
 		register_post_meta( 'post', $key, array(
 			'type'              => 'string',
 			'single'            => true,
@@ -57,6 +71,18 @@ add_action( 'init', function () {
 			'sanitize_callback' => 'sanitize_text_field',
 		) );
 	}
+
+	// Tiempo de lectura («14 min de lectura»), a 200 palabras por minuto.
+	register_block_bindings_source( 'kalunatv2/reading-time', array(
+		'label'              => 'Tiempo de lectura',
+		'uses_context'       => array( 'postId' ),
+		'get_value_callback' => function ( $args, $block ) {
+			$post_id = $block->context['postId'] ?? get_the_ID();
+			$text    = wp_strip_all_tags( strip_shortcodes( (string) get_post_field( 'post_content', $post_id ) ) );
+			$words   = count( preg_split( '/\s+/u', trim( $text ), -1, PREG_SPLIT_NO_EMPTY ) );
+			return sprintf( '%d min de lectura', max( 1, (int) round( $words / 200 ) ) );
+		},
+	) );
 } );
 
 /**
